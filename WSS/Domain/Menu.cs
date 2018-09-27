@@ -8,39 +8,38 @@ namespace WSS.Domain
     {
         public void StartMenu()
         {
-            int choice = 0;
-            bool check = false;
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
 
             Console.WriteLine("1 Infrastructure\n2 Prisoners\n3 Wedlock devices\n4 Exit\n");
-            Console.Write("> _");
-            do
-            {
-                string answer = Console.ReadLine();
-                check = int.TryParse(answer, out choice);
-                if (check == false)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You may only choose numbers");
-                    Console.ResetColor();
-                }
+            Console.Write("> ");
+            Console.ResetColor();
 
-            } while (check == false);
-            switch(choice)
+            var input = Console.ReadKey();
+
+            switch (input.Key)
             {
-                case 1:
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
                     Infrastructure();
                     break;
-                case 2:
+
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                     break;
-                case 3:
+
+                case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
                     break;
-                case 4:
+
+                case ConsoleKey.D4:
+                case ConsoleKey.NumPad4:
                     Environment.Exit(4);
                     break;
+
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You can only choose between 1 and 4");
+                    Console.WriteLine("\nYou can only choose between 1 and 4");
                     Console.ResetColor();
                     Console.ReadKey();
                     StartMenu();
@@ -53,50 +52,46 @@ namespace WSS.Domain
         public void Infrastructure()
         {
             Console.Clear();
-            int choice = 0;
-            bool check = false;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
             Console.WriteLine("1 List blocks\n2 Add block\n3 Back to main menu");
-            Console.Write("> _");
-            Console.WriteLine("\n\n\nPress Esc to return to previous view.");
+            Console.WriteLine("\nPress Esc to return to previous view.");
 
-            var key = Console.ReadKey();
-            if( key.Key==ConsoleKey.Escape)
+            Console.Write("\n> ");
+            Console.ResetColor();
+            var input = Console.ReadKey();
+
+            switch (input.Key) 
             {
-                StartMenu();
-            }
-
-            do
-            {
-                Console.WriteLine("   ");
-                string answer = Console.ReadLine();
-                check = int.TryParse(answer, out choice);
-                if (check == false)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You may only choose numbers");
-                    Console.ResetColor();
-                }
-
-            } while (check == false);
-
-            switch (choice)
-            {
-                case 1:
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
                     break;
-                case 2:
+
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                     break;
-                case 3:
+
+                case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
                     StartMenu();
                     break;
+
+                case ConsoleKey.Escape:
+                    StartMenu();
+                    break;
+
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You can only choose between 1 and 3");
+                    Console.WriteLine("\nYou can only choose between 1 and 3");
                     Console.ResetColor();
                     Console.ReadKey();
                     Infrastructure();
                     break;
-
             }
+
+
+
+
 
         }
 
