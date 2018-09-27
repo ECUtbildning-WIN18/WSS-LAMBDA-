@@ -1,4 +1,5 @@
 ﻿using System;
+using WSS.Domain;
 
 namespace WSS
 {
@@ -6,7 +7,14 @@ namespace WSS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Menu menu = new Menu();
+            menu.StartMenu();
+
+
+            Console.ReadKey();
+
+
+
         }
     }
 }
