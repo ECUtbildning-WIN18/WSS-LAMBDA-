@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WSS.Domain
 {
-    class Menu
+     class Menu 
     {
         public void StartMenu()
         {
@@ -26,6 +26,7 @@ namespace WSS.Domain
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
+                    
                     break;
 
                 case ConsoleKey.D3:
@@ -51,8 +52,10 @@ namespace WSS.Domain
 
         public void Infrastructure()
         {
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
+
 
             Console.WriteLine("1 List blocks\n2 Add block\n3 Back to main menu");
             Console.WriteLine("\nPress Esc to return to previous view.");
@@ -65,10 +68,21 @@ namespace WSS.Domain
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
+
+
+                    Console.ReadKey();
+                    Infrastructure();
+
                     break;
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
+
+
+                    Console.ReadKey();
+                    Infrastructure();
+
+
                     break;
 
                 case ConsoleKey.D3:
