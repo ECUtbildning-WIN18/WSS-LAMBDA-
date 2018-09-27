@@ -57,10 +57,17 @@ namespace WSS.Domain
             bool check = false;
             Console.WriteLine("1 List blocks\n2 Add block\n3 Back to main menu");
             Console.Write("> _");
+            Console.WriteLine("\n\n\nPress Esc to return to previous view.");
 
+            var key = Console.ReadKey();
+            if( key.Key==ConsoleKey.Escape)
+            {
+                StartMenu();
+            }
 
             do
             {
+                Console.WriteLine("   ");
                 string answer = Console.ReadLine();
                 check = int.TryParse(answer, out choice);
                 if (check == false)
