@@ -65,10 +65,16 @@ namespace WSS.Domain
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
+                    
+                    Console.ReadKey();
+                    Infrastructure();
                     break;
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
+                    
+                    Console.ReadKey();
+                    Infrastructure();
                     break;
 
                 case ConsoleKey.D3:
@@ -89,17 +95,7 @@ namespace WSS.Domain
                     break;
             }
 
-
-
-
-
         }
-
-
-
-
-
-
 
     }
 }
