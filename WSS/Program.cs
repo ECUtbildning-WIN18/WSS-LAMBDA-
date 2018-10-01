@@ -30,7 +30,7 @@ namespace WSS
             ListBlocks(myPrison);
 
             DeleteBlock(myPrison, "A2");
-
+            
             ListBlocks(myPrison);
 
             // myBuildingFactory = new BlockFactory("A1", "Alpha One");   // så här skapas "block builder"... på samma sätt med en en Cellfactory
