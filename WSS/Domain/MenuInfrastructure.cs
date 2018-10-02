@@ -7,6 +7,12 @@ namespace WSS.Domain
     class MenuInfrastructure
     {
         public Menu StartMenu { get; set; }
+        public Prison Prison { get; set; }
+
+        //public MenuInfrastructure()
+        //{
+        //    StartMenu = menu;
+        //}
 
         public void Infrastructure()
         {
@@ -24,7 +30,7 @@ namespace WSS.Domain
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
-
+                    Prison.ListBlocks();
                     Console.ReadKey();
                     Infrastructure();
                     break;

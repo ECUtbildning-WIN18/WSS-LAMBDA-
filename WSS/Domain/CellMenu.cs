@@ -9,7 +9,7 @@ namespace WSS.Domain
         public BlockMenu BlockMenu { get; set; }
         public Menu StartMenu { get; set; }
 
-        public void Menu()
+        public void ListMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -27,14 +27,16 @@ namespace WSS.Domain
                 case ConsoleKey.NumPad1:
 
                     Console.ReadKey();
-                    ListCells();
+                    //ListCells();
+                    Console.WriteLine("Listing cells");
                     break;
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
 
                     Console.ReadKey();
-                    AddCell();
+                    //AddCell();
+                    Console.WriteLine("Adding cells");
                     break;
 
                 case ConsoleKey.D3:
@@ -51,7 +53,7 @@ namespace WSS.Domain
                     Console.WriteLine("\nYou can only choose between 1 and 3");
                     Console.ResetColor();
                     Console.ReadKey();
-                    Menu();
+                    //Menu();
                     break;
             }
 

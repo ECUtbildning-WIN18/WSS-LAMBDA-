@@ -7,10 +7,11 @@ namespace WSS.Domain
     class BlockMenu
     {
         public MenuInfrastructure MenuInfrastructure { get; set; }
+        public Prison Prison { get; set; }
 
         public void ListMenu()
         {
-            myPrison.ListBlocks();
+            Prison.ListBlocks();
             Console.WriteLine("\n");
             Console.WriteLine("(V)iew block   (D)elete block");
             var input = Console.ReadKey();
@@ -18,10 +19,13 @@ namespace WSS.Domain
             switch (input.Key)
             {
                 case ConsoleKey.V:
-                    BlockView();
+                    //BlockView(); 
+
+                    Console.WriteLine("Viewing blocks");
                     break;
                 case ConsoleKey.D:
-                    DeleteBlock();
+                    //DeleteBlock();
+                    Console.WriteLine("Deleting blocks");
                     break;
                 case ConsoleKey.Escape:
                     MenuInfrastructure.Infrastructure();

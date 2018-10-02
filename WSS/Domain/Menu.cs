@@ -9,15 +9,11 @@ namespace WSS.Domain
 
         public MenuInfrastructure MenuInfrastructure { get; set; }
       
-        Prison Prison { get; set; }
-        public Dictionary<string, AbstractBuilding> MyAwesomePrison { get; set; }
+        //Prison Prison { get; set; }
 
-        public Menu(Dictionary<string, AbstractBuilding> prisonDictionary, Prison prison)
-        {
-            Prison = prison;
-            MyAwesomePrison = prisonDictionary;
-        }
-
+        //public Menu( )
+        //{
+        //}
 
         public void StartMenu()
         {
@@ -34,9 +30,7 @@ namespace WSS.Domain
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
-
                     MenuInfrastructure.Infrastructure();
-
                     break;
 
                 case ConsoleKey.D2:
@@ -63,51 +57,51 @@ namespace WSS.Domain
         }
 
 
-        public void Infrastructure()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
+        //public void Infrastructure()
+        //{
+        //    Console.Clear();
+        //    Console.ForegroundColor = ConsoleColor.Cyan;
 
-            Console.WriteLine("1 List blocks\n2 Add block\n3 Back to main menu");
-            Console.WriteLine("\nPress Esc to return to previous view.");
+        //    Console.WriteLine("1 List blocks\n2 Add block\n3 Back to main menu");
+        //    Console.WriteLine("\nPress Esc to return to previous view.");
 
-            Console.Write("\n> ");
-            Console.ResetColor();
-            var input = Console.ReadKey();
+        //    Console.Write("\n> ");
+        //    Console.ResetColor();
+        //    var input = Console.ReadKey();
 
-            switch (input.Key) 
-            {
-                case ConsoleKey.D1:
-                case ConsoleKey.NumPad1:
-                    Prison.ListBlocks(MyAwesomePrison);
+        //    switch (input.Key) 
+        //    {
+        //        case ConsoleKey.D1:
+        //        case ConsoleKey.NumPad1:
+        //            Prison.ListBlocks( Prison );
                     
-                    break;
+        //            break;
 
-                case ConsoleKey.D2:
-                case ConsoleKey.NumPad2:
+        //        case ConsoleKey.D2:
+        //        case ConsoleKey.NumPad2:
                     
-                    Console.ReadKey();
-                    Infrastructure();
-                    break;
+        //            Console.ReadKey();
+        //            Infrastructure();
+        //            break;
 
-                case ConsoleKey.D3:
-                case ConsoleKey.NumPad3:
-                    StartMenu();
-                    break;
+        //        case ConsoleKey.D3:
+        //        case ConsoleKey.NumPad3:
+        //            StartMenu();
+        //            break;
 
-                case ConsoleKey.Escape:
-                    StartMenu();
-                    break;
+        //        case ConsoleKey.Escape:
+        //            StartMenu();
+        //            break;
 
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nYou can only choose between 1 and 3");
-                    Console.ResetColor();
-                    Console.ReadKey();
-                    Infrastructure();
-                    break;
-            }
-        }
+        //        default:
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.WriteLine("\nYou can only choose between 1 and 3");
+        //            Console.ResetColor();
+        //            Console.ReadKey();
+        //            Infrastructure();
+        //            break;
+        //    }
+        //}
     }
 }
 
