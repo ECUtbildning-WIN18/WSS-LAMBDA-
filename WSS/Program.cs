@@ -23,10 +23,11 @@ namespace WSS
             myAwesomePrison = myPrison.InitiatePrison(); // Dictionary med blocks
             //prison.ListBlocks(myAwesomePrison);
 
-            //prison.DeleteBlock(myAwesomePrison, "A2");
 
-            //prison.ListBlocks(myAwesomePrison);
-
+            DeleteBlock(myPrison, "A2");
+            
+            ListBlocks(myPrison);
+          
             // myBuildingFactory = new BlockFactory("A1", "Alpha One");   // så här skapas "block builder"... på samma sätt med en en Cellfactory
             //AbstractBuilding myBlock = myBuildingFactory.GetBuilding();    //myBuilding använder den overridade metoden o skapar ett
             //myPrison.Add(myBlock.BuildingId, myBlock);  // lägger till ett block i myPrison...done!
