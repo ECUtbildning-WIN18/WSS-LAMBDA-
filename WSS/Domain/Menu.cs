@@ -6,6 +6,15 @@ namespace WSS.Domain
 {
     class Menu
     {
+        Prison Prison { get; set; }
+        public Dictionary<string, AbstractBuilding> MyAwesomePrison { get; set; }
+
+        public Menu(Dictionary<string, AbstractBuilding> prisonDictionary, Prison prison)
+        {
+            Prison = prison;
+            MyAwesomePrison = prisonDictionary;
+        }
+
         public void StartMenu()
         {
             Console.Clear();
@@ -22,6 +31,7 @@ namespace WSS.Domain
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
                     Infrastructure();
+                  
                     break;
 
                 case ConsoleKey.D2:
@@ -65,9 +75,8 @@ namespace WSS.Domain
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
+                    Prison.ListBlocks(MyAwesomePrison);
                     
-                    Console.ReadKey();
-                    Infrastructure();
                     break;
 
                 case ConsoleKey.D2:
