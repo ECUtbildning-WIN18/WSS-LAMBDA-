@@ -7,11 +7,10 @@ namespace WSS.Domain
     class Prison
     {
         public string Name { get; } = "Lambda prison";
-        public Dictionary<string, AbstractBuilding> MyPrison { get; set; }
+        public Dictionary<string, Block> MyPrison { get; set; } = new Dictionary<string, Block>();
 
-        public Prison(Dictionary<string, AbstractBuilding> aPrisonDictionary)
+        public Prison()
         {
-            MyPrison = aPrisonDictionary;
         }
 
 
@@ -26,22 +25,48 @@ namespace WSS.Domain
 
         public void DeleteBlock( Prison prison, string blockId )
         {
-            Console.WriteLine($"Deleting block id: {blockId} ");
-            prison.MyPrison.Remove(blockId);
+            Console.WriteLine($"Are you sure want to delete {blockId}?");
+            Console.WriteLine("(Y)es    (N)o");
+            string choice = Console.ReadLine().ToUpper();
+            if (choice == "Y")
+            {
+                prison.MyPrison.Remove(blockId);
+                Console.WriteLine($"You deleted block {blockId}");
+            }
+            else if(choice == "N")
+            {
+            }
+            else
+            {
+                Console.WriteLine("You can only choose Yes or No");
+                Console.Clear();
+                DeleteBlock(prison,blockId);
+            }
+
         }
 
 
         public void ViewBlock(string key)
         {
-            //Console.WriteLine($" { keyValue.Value.BuildingId } ");
             if (MyPrison.ContainsKey(key))
             {
                 AbstractBuilding myBlock = MyPrison[key];
-                Console.WriteLine($" # {myBlock.BuildingType}{myBlock.BuildingId}\n");
-                Console.WriteLine($" # {myBlock.BuildingName}");
+                Console.WriteLine($"\n # {myBlock.BuildingType} {myBlock.BuildingId} {myBlock.BuildingName}\n");
             }
         }
 
 
+        public void AddBlock(Prison prison)
+        {
+            Console.Write("BlockId: ");
+            string id = Console.ReadLine();
+            Console.Write("BlockName: ");
+            string name = Console.ReadLine();
+
+            Block newBlock = new Block(id, name);
+            prison.MyPrison.Add(newBlock.BuildingId, newBlock);
+
+            Console.WriteLine($"You added block {id}");
+        }
     }
 }

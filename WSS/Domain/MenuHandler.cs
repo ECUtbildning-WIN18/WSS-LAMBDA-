@@ -85,7 +85,7 @@ namespace WSS.Domain
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
-                    Console.WriteLine("Add block");
+                    Prison.AddBlock(Prison);
                     Console.ReadKey();
                     Infrastructure();
                     break;
@@ -112,40 +112,50 @@ namespace WSS.Domain
 
         public void ListBlocksMenu()
         {
+            Console.Clear();
+            Console.WriteLine("***** Block List *****\n");
             Prison.ListBlocks();
             Console.WriteLine("\n");
             Console.WriteLine("(V)iew block   (D)elete block");
+            Console.WriteLine("\nPress Esc to return to previous view.");
             Console.Write("\n> ");
             var input = Console.ReadKey();
-
+            string key;
             switch (input.Key)
+                
             {
-                case ConsoleKey.V:
-                    //BlockView(); 
+
+                case ConsoleKey.V:  // Viewing
+                    
                     Console.Clear();
+                    Console.WriteLine("***** Block List *****\n");
                     Prison.ListBlocks();
                     Console.Write("\nBlock> ");
-                    var key = Console.ReadLine();
-                    Console.WriteLine($"Viewing block Id: {key}");
-                    //Prison.MyPrison[key].BuildingId;
+                    key = Console.ReadLine().ToUpper();
                     Prison.ViewBlock(key);
+                    Prison.MyPrison[key].ListCellsInBlock();
                     Console.ReadKey();
                     Infrastructure();
                     break;
                 case ConsoleKey.D:
                     //DeleteBlock();
-                    Console.WriteLine("Deleting blocks");
+                    Console.Clear();
+                    Console.WriteLine("***** Block List *****\n");
+                    Prison.ListBlocks();
+                    Console.Write("\nDelete block> ");
+                    key = Console.ReadLine().ToUpper();
+                    Prison.DeleteBlock(Prison, key);
                     break;
                 case ConsoleKey.Escape:
                     Infrastructure();
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You can only choose between V or D.");
+                    Console.WriteLine("\nYou can only choose between V or D.");
                     Console.WriteLine("Press any key to continue.");
                     Console.ResetColor();
                     Console.ReadKey();
-                    //ListBlockMenu();
+                    ListBlocksMenu();
                     break; 
             }
         }

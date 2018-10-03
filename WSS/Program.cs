@@ -12,7 +12,7 @@ namespace WSS
             //BuildingFactory myBuildingFactory;  // "Infrastructure builder"
 
             Prison lambdaPrison;
-            lambdaPrison = PrisonInitializer.InitiatePrison();
+            lambdaPrison = PrisonBuilder.Build();
             MenuHandler menuHandler = new MenuHandler(lambdaPrison);
             menuHandler.StartMenu();
 
