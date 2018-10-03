@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace WSS.Domain
 {
@@ -132,18 +133,30 @@ namespace WSS.Domain
                     Prison.ListBlocks();
                     Console.Write("\nBlock> ");
                     key = Console.ReadLine().ToUpper();
+                    if (!Prison.MyPrison.ContainsKey(key))
+                    {
+                        Console.WriteLine("This block doesn't exist");
+                        Thread.Sleep(1000);
+                        ListBlocksMenu();
+                    }
                     Prison.ViewBlock(key);
                     Prison.MyPrison[key].ListCellsInBlock();
                     Console.ReadKey();
                     Infrastructure();
                     break;
                 case ConsoleKey.D:
-                    //DeleteBlock();
                     Console.Clear();
                     Console.WriteLine("***** Block List *****\n");
                     Prison.ListBlocks();
                     Console.Write("\nDelete block> ");
                     key = Console.ReadLine().ToUpper();
+                    if (!Prison.MyPrison.ContainsKey(key))
+                    {
+                        Console.WriteLine("This block doesn't exist");
+                        Thread.Sleep(1000);
+                        ListBlocksMenu();
+                    }
+
                     Prison.DeleteBlock(Prison, key);
                     break;
                 case ConsoleKey.Escape:
