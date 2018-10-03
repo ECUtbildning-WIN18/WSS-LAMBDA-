@@ -9,25 +9,20 @@ namespace WSS
     {
         static void Main(string[] args)
         {
-            BuildingFactory myBuildingFactory;  // "Infrastructure builder"
+            //BuildingFactory myBuildingFactory;  // "Infrastructure builder"
+
+            Prison lambdaPrison;
+            lambdaPrison = PrisonBuilder.Build();
+            MenuHandler menuHandler = new MenuHandler(lambdaPrison);
+            menuHandler.StartMenu();
+
+            Console.ReadKey();
 
 
+            //DeleteBlock(myPrison, "A2");
 
-            //Dictionary<string, AbstractBuilding> myPrison = new Dictionary<string, AbstractBuilding>();
+            //ListBlocks(myPrison);
 
-            // Skapar en "start" på ett fängelse
-
-            Prison myPrison = new Prison();
-            Dictionary<string, AbstractBuilding> myAwesomePrison; 
-
-            myAwesomePrison = myPrison.InitiatePrison(); // Dictionary med blocks
-            //prison.ListBlocks(myAwesomePrison);
-
-
-            DeleteBlock(myPrison, "A2");
-            
-            ListBlocks(myPrison);
-          
             // myBuildingFactory = new BlockFactory("A1", "Alpha One");   // så här skapas "block builder"... på samma sätt med en en Cellfactory
             //AbstractBuilding myBlock = myBuildingFactory.GetBuilding();    //myBuilding använder den overridade metoden o skapar ett
             //myPrison.Add(myBlock.BuildingId, myBlock);  // lägger till ett block i myPrison...done!
@@ -35,9 +30,7 @@ namespace WSS
             // Nu kan vi lista eller ta bort block eller visa enskilda block, exempelvis...:
             //Console.WriteLine($"Building type: { myPrison["A1"].BuildingType}   Building name: {myPrison["A1"].BuildingName}");
 
-            Menu menu = new Menu(myAwesomePrison, myPrison);
-            menu.StartMenu();
-
+            //MenuInfrastructure menuInfrastructure = new MenuInfrastructure();
 
             Console.ReadKey();
         }

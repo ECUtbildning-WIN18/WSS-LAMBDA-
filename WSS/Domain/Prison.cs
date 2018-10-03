@@ -6,41 +6,67 @@ namespace WSS.Domain
 {
     class Prison
     {
-        Dictionary<string, AbstractBuilding> myPrison = new Dictionary<string, AbstractBuilding>();
+        public string Name { get; } = "Lambda prison";
+        public Dictionary<string, Block> MyPrison { get; set; } = new Dictionary<string, Block>();
 
-        public Dictionary<string, AbstractBuilding> InitiatePrison()
+        public Prison()
         {
-            AbstractBuilding myBlock1, myBlock2, myBlock3, myBlock4, myBlock5;
-            myBlock1 = new Block("A1", "Alpha One");
-            myBlock2 = new Block("A2", "Alpha Two");
-            myBlock3 = new Block("B1", "Beta One");
-            myBlock4 = new Block("B2", "Beta Two");
-            myBlock5 = new Block("C3", "Ceasar One");
-
-            myPrison.Add(myBlock1.BuildingId, myBlock1);
-            myPrison.Add(myBlock2.BuildingId, myBlock2);
-            myPrison.Add(myBlock3.BuildingId, myBlock3);
-            myPrison.Add(myBlock4.BuildingId, myBlock4);
-            myPrison.Add(myBlock5.BuildingId, myBlock5);
-
-            return myPrison;
         }
 
-        public void ListBlocks(Dictionary<string, AbstractBuilding> prison)
-        {
-            foreach (var prisonBlock in prison)
+
+        public void ListBlocks()
+        {          
+            foreach (var prisonBlock in MyPrison)
             {
-                Console.WriteLine($"Building type: { prisonBlock.Value.BuildingId }  Building name: {prisonBlock.Value.BuildingName}");
+                Console.WriteLine($" { prisonBlock.Value.BuildingId } ");
             }
         }
 
-        public void DeleteBlock(Dictionary<string, AbstractBuilding> prison, string blockId)
+
+        public void DeleteBlock( Prison prison, string blockId )
         {
-            Console.WriteLine($"Deleting block id: {blockId} ");
-            prison.Remove(blockId);
+            Console.WriteLine($"Are you sure want to delete {blockId}?");
+            Console.WriteLine("(Y)es    (N)o");
+            string choice = Console.ReadLine().ToUpper();
+            if (choice == "Y")
+            {
+                prison.MyPrison.Remove(blockId);
+                Console.WriteLine($"You deleted block {blockId}");
+            }
+            else if(choice == "N")
+            {
+            }
+            else
+            {
+                Console.WriteLine("You can only choose Yes or No");
+                Console.Clear();
+                DeleteBlock(prison,blockId);
+            }
+
         }
 
 
+        public void ViewBlock(string key)
+        {
+            if (MyPrison.ContainsKey(key))
+            {
+                AbstractBuilding myBlock = MyPrison[key];
+                Console.WriteLine($"\n # {myBlock.BuildingType} {myBlock.BuildingId} {myBlock.BuildingName}\n");
+            }
+        }
 
+
+        public void AddBlock(Prison prison)
+        {
+            Console.Write("BlockId: ");
+            string id = Console.ReadLine();
+            Console.Write("BlockName: ");
+            string name = Console.ReadLine();
+
+            Block newBlock = new Block(id, name);
+            prison.MyPrison.Add(newBlock.BuildingId, newBlock);
+
+            Console.WriteLine($"You added block {id}");
+        }
     }
 }
